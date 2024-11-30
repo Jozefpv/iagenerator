@@ -1,0 +1,7 @@
+<div class="categoryGlobalContainer">
+
+    <div class="photosContainer" *ngFor="let photo of photosList; let i = index">
+        <img class="singlePhoto" [src]="photo" alt="">
+        <button class="buttonPrint" (click)="printPhoto(photo)"><mat-icon>print</mat-icon>Imprimir</button>
+    </div>
+</div>

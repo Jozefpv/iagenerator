@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Baloo2';
+    src: url('assets/fonts/baloo-2-2/Baloo2-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body { height: 100%;background: #E0F4F9;
+}
+body { margin: 0; font-family: Baloo2 }
+  

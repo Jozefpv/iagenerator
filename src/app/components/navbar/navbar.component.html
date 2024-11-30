@@ -1,0 +1,31 @@
+<div class="globalContainer">
+    <div class="headerContainer">
+        <img class="avatarImage" src="assets/photos/medalla.webp" alt="">   
+        <h3 class="premiumTitle">Premium</h3>
+    </div>
+    <div style="display: flex; flex-direction: row; gap:25px; width: 100%; justify-content: space-between;">
+        <div class="navbarContainer">
+            <div class="avatarContainer">
+                <img class="avatarImage" src="https://cdn.discordapp.com/attachments/315600040968060929/1307784358098374816/personaje-dibujos-animados-avatar-3d_113255-94449.jpg?ex=673b9098&is=673a3f18&hm=e62a683cb68908fc02ff07a35400cbe344f62dd576dca66a4a962cd48d4aabd0&" alt="">
+                <p style="font-family: Baloo2;">Principal</p>
+            </div>
+        </div>
+        <div style="width: 80%;">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="navbarRightContainer">
+            <div class="menuOption">
+                <img class="avatarImage" src="assets/photos/codesandbox.png" alt="">             
+                <p style="font-family: Baloo2; margin: 0px;">Categorías</p>
+            </div>
+            <div class="menuOptionContainer" [routerLink]="['/categories', option.id]" *ngFor="let option of menuOptions; let i = index">
+                <mat-divider style="border-color: rgb(168, 168, 168); height: 2px; width: 100%;"></mat-divider>
+                <div class="menuOption">
+                    <img class="avatarImage" [src]="option.avatarImage" alt="">
+                    <p style="font-family: Baloo2; margin: 0px;">{{option.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
