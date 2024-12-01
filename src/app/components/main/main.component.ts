@@ -20,11 +20,9 @@ export class MainComponent implements OnInit{
  constructor(private mainService: MainService, private socketService: SocketWebService){}
 
   ngOnInit(): void {
-    this.socketSubscription = this.socketService.listenForImageUrls().subscribe((messages: any) => {
-      // Aquí accedemos a las URLs dentro de 'messages'
-      if (Array.isArray(messages)) {
-        this.imageURL = messages[0]; // Almacenamos las URLs en un array
-      }
+    this.socketSubscription = this.socketService.listenForImageUrls().subscribe((urls: string[]) => {
+      // Al recibir las URLs, las almacenamos en 'imageUrls'
+      this.imageURL = urls[0];
     });
   }
 
