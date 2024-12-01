@@ -14,11 +14,14 @@ export class SocketWebService{
     this.socket = io(this.serverUrl);
    }
 
-   listen(eventName: string): Observable<any> {
-    return new Observable((observer) => {
-      this.socket.on(eventName, (data: any) => {
-        observer.next(data);
+   listenForImageUrls() {
+    return new Observable<any>((observer) => {
+      this.socket.on('imageReady', (data) => {
+        if (data && data.messages) {
+          observer.next(data.messages);
+        }
       });
+
     });
   }
 
