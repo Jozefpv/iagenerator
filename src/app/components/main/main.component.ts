@@ -18,6 +18,7 @@ export class MainComponent implements OnInit{
 
   ngOnInit(): void {
     this.socketService.listen('event').subscribe((data: string) => {
+      console.log(data)
     });
   }
 
