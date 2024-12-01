@@ -16,7 +16,7 @@ export class SocketWebService{
 
    listenForImageUrls() {
     return new Observable<any>((observer) => {
-      this.socket.on('imageReady', (data) => {
+      this.socket.on('event', (data) => {
         if (data && data.messages) {
           observer.next(data.messages);
         }
