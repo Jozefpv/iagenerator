@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -16,9 +17,13 @@ export class NavbarComponent implements OnInit {
     { id: 5, title: 'Dibujos Animados', avatarImage: 'assets/photos/serie.png' }
   ]
 
-  constructor(){}
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     
+  }
+
+  homeRedirect(){
+    this.router.navigate(['/'])
   }
 }
