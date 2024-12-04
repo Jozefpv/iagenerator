@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
     { id: 5, title: 'Dibujos Animados', avatarImage: 'assets/photos/serie.png' }
   ]
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private authService: AuthService){}
 
   ngOnInit(): void {
     
@@ -25,5 +26,14 @@ export class NavbarComponent implements OnInit {
 
   homeRedirect(){
     this.router.navigate(['/'])
+  }
+
+  closeSession(){
+    this.authService.logout().subscribe(res => {
+      if(res){
+        localStorage.clear()
+        this.router.navigate(['/login'])
+      }
+    })
   }
 }
