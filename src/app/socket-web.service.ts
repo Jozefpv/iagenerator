@@ -36,6 +36,18 @@ export class SocketWebService{
     });
   }
 
+  listenForImageProgress(): Observable<string[]> {
+    return new Observable<string[]>((observer) => {
+      this.socket.on('imageProgress', (data: any) => {
+        if (data && data.progress) {
+          observer.next(data.progress);
+        } else {
+          observer.next([]);
+        }
+      });
+    });
+  }
+
   emit(eventName: string, data: any): void {
     this.socket.emit(eventName, data);
   }
