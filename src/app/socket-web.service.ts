@@ -8,10 +8,20 @@ import { io, Socket } from 'socket.io-client';
 export class SocketWebService{
 
   private socket: Socket;
-  private readonly serverUrl: string = 'https://iageneratorapi.onrender.com';
+  private readonly serverUrl: string = 'https://iageneratorapi.onrender.com'
+  //'https://iageneratorapi.onrender.com';
 
   constructor() {
     this.socket = io(this.serverUrl);
+  
+    this.socket.on('connect', () => {
+      const userGuid = localStorage.getItem('userGuid')
+      if (userGuid) {
+        this.socket.emit('userGuid', userGuid);
+      } else {
+        console.error('No se encontró el userGuid en localStorage');
+      }
+    })
    }
 
    listenForImageUrls(): Observable<string[]> {
