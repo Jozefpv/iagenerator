@@ -36,13 +36,13 @@ export class SocketWebService{
     });
   }
 
-  listenForImageProgress(): Observable<string[]> {
-    return new Observable<string[]>((observer) => {
+  listenForImageProgress(): Observable<number> {
+    return new Observable<number>((observer) => {
       this.socket.on('imageProgress', (data: any) => {
-        if (data && data.progress) {
+        if (data && data.progress !== undefined) {
           observer.next(data.progress);
         } else {
-          observer.next([]);
+          observer.next(0);
         }
       });
     });
