@@ -9,7 +9,6 @@ export class SocketWebService{
 
   private socket: Socket;
   private readonly serverUrl: string = 'https://iageneratorapi.onrender.com'
-  //'https://iageneratorapi.onrender.com';
 
   constructor() {
     this.socket = io(this.serverUrl);

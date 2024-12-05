@@ -11,29 +11,26 @@
             <button (click)="closeSession()">Cerrar sesión</button>
         </div>
     </div>
-    <div style="display: flex; flex-direction: row; gap:25px; width: 100%; justify-content: space-between;">
+    <div class="mainContentContainer">
         <div class="navbarContainer">
             <div class="avatarContainer">
-                <img class="avatarImage"
-                    src="https://i.postimg.cc/6QZ1Tcbd/personaje-dibujos-animados-avatar-3d-113255-94449.jpg"
-                    alt="">
-                <p style="font-family: Baloo2;">Principal</p>
+                <img class="avatarImage" src="https://i.postimg.cc/6QZ1Tcbd/personaje-dibujos-animados-avatar-3d-113255-94449.jpg" alt="">
+                <p class="navbarText">Principal</p>
             </div>
         </div>
-        <div style="width: 80%;">
+        <div class="routerContainer">
             <router-outlet></router-outlet>
         </div>
         <div class="navbarRightContainer">
             <div class="menuOption">
                 <img class="avatarImage" src="assets/photos/codesandbox.png" alt="">
-                <p style="font-family: Baloo2; margin: 0px;">Categorías</p>
+                <p class="navbarText">Categorías</p>
             </div>
-            <div class="menuOptionContainer" [routerLink]="['/categories', option.id]"
-                *ngFor="let option of menuOptions; let i = index">
-                <mat-divider style="border-color: rgb(168, 168, 168); height: 2px; width: 100%;"></mat-divider>
+            <div class="menuOptionContainer" [routerLink]="['/categories', option.id]" *ngFor="let option of menuOptions; let i = index">
+                <mat-divider class="menuDivider"></mat-divider>
                 <div class="menuOption">
                     <img class="avatarImage" [src]="option.avatarImage" alt="">
-                    <p style="font-family: Baloo2; margin: 0px;">{{option.title}}</p>
+                    <p class="navbarText">{{option.title}}</p>
                 </div>
             </div>
         </div>

@@ -1,34 +1,16 @@
-.globalContainer{
+.globalContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.navbarContainer{
-    display: flex;
-    height: 60vh;
-    gap: 15px;
-    background-color: #9FD6F4;
-    width: 5%;
-    border-radius: 0px 10px 10px 0px;
-}
-
-.navbarRightContainer{
-    display: flex;
-    width: 10%;
-    border-radius: 0px 10px 10px 0px;
-    flex-direction: column;
-    padding-right: 10px;
-
-}
-
-.globalHeaderContainer{
+.globalHeaderContainer {
     display: flex;
     width: 100%;
     align-items: center;
 }
 
-.headerContainer{
+.headerContainer {
     background-color: #f0fafc;
     height: 100%;
     width: 60%;
@@ -41,7 +23,7 @@
     margin-right: 5%;
 }
 
-.mainLogoContainer{
+.mainLogoContainer {
     background-color: #f0fafc;
     height: 100%;
     width: min-content;
@@ -55,7 +37,7 @@
     margin-right: 5%;
 }
 
-.avatarContainer{
+.avatarContainer {
     display: flex;
     width: 100%;
     background-color: rgb(253, 195, 35);
@@ -66,7 +48,36 @@
     align-items: center;
 }
 
-.menuOptionContainer{
+.avatarImage {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 50px;
+}
+
+/* Navbar */
+.navbarContainer {
+    display: flex;
+    height: 60vh;
+    gap: 15px;
+    background-color: #9FD6F4;
+    width: 5%;
+    border-radius: 0px 10px 10px 0px;
+}
+
+.navbarRightContainer {
+    display: flex;
+    width: 10%;
+    border-radius: 0px 10px 10px 0px;
+    flex-direction: column;
+    padding-right: 10px;
+}
+
+.navbarText {
+    font-family: Baloo2;
+    margin: 0px;
+}
+
+.menuOptionContainer {
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
@@ -76,7 +87,7 @@
     gap: 10px;
 }
 
-.menuOption{
+.menuOption {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -87,26 +98,38 @@
     padding-bottom: 5px;
 }
 
-.avatarImage{
-    max-width: 50px;
-    max-height: 50px;
-    border-radius: 50px;
+.menuOptionContainer:hover {
+    background-color: #f0fafc;
+    transition: 0.2s;
+    cursor: pointer;
 }
 
-.premiumTitle{
+.menuDivider {
+    border-color: rgb(168, 168, 168);
+    height: 2px;
+    width: 100%;
+}
+
+.premiumTitle {
     padding: 10px !important;
     margin: 0px !important;
     font-family: Baloo2;
     font-weight: bold;
 }
 
-.menuOptionContainer:hover{
-    background-color: #f0fafc;
-    transition: 0.2s;
+.mainLogo {
+    max-height: 70px;
     cursor: pointer;
 }
 
-.mainLogo{
-    max-height: 70px;
-    cursor: pointer;
+.mainContentContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.routerContainer {
+    width: 80%;
 }

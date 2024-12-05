@@ -1,4 +1,4 @@
-.globalContainer{
+.globalContainer {
     width: 100%;
 }
 
@@ -25,6 +25,15 @@
     width: 100%;
 }
 
+.promptGlobalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    box-sizing: border-box;
+    min-width: 350px;
+}
+
 .promptContainer {
     display: flex;
     flex-direction: column;
@@ -40,37 +49,6 @@
     min-height: 420px;
 }
 
-
-.imageGlobalContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
-    box-sizing: border-box;
-    min-width: 350px;
-
-}
-
-.imageGlobalContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
-    box-sizing: border-box;
-    min-width: 350px;
-    gap: 10px;
-}
-
-.promptGlobalContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
-    box-sizing: border-box;
-    min-width: 350px;
-}
-
-
 .promptContainerTitle {
     font-family: Baloo2;
     color: #3768BE;
@@ -79,19 +57,6 @@
 .promptContainerSubtitle {
     font-family: Baloo2;
     font-weight: bold;
-}
-
-.imageContainer {
-    border: 1px solid rgb(240, 240, 240);
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px;
-    width: 100%;
-    box-sizing: border-box;
-    display: flex;
-    min-width: 350px;
-    min-height: 420px;
-    justify-content: center;
 }
 
 .inputPrompt {
@@ -126,10 +91,43 @@
     box-sizing: border-box;
 }
 
-.buttonPrompt:focus, .buttonPrompt:hover {
+.buttonPrompt:focus,
+.buttonPrompt:hover {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     background-color: #0056b3;
     cursor: pointer;
+}
+
+/* Image Section */
+.imageGlobalContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    box-sizing: border-box;
+    min-width: 350px;
+    gap: 10px;
+}
+
+.imageContainer {
+    border: 1px solid rgb(240, 240, 240);
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    min-width: 350px;
+    min-height: 420px;
+    justify-content: center;
+}
+
+.imageElement {
+    max-width: 300px;
+}
+
+.buttonPrintContainer {
+    width: 100%;
 }
 
 .buttonPrint {
@@ -142,16 +140,21 @@
     padding: 10px;
     box-sizing: border-box;
     width: 100%;
-    justify-content: center;  /* Centra el texto horizontalmente */
-    align-items: center;      /* Centra el texto verticalmente */
-    text-align: center; 
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     gap: 5px;
 }
 
-.buttonPrint:focus, .buttonPrint:hover {
+.buttonPrint:focus,
+.buttonPrint:hover {
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     background-color: #0056b3;
     cursor: pointer;
 }
 
-
+.footerContainer {
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
