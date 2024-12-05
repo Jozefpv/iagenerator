@@ -10,8 +10,8 @@
             <div>
             </div>
         </div>
-        <div class="imageGlobalContainer" *ngIf="!loading">
-            <div class="imageContainer">
+        <div class="imageGlobalContainer">
+            <div class="imageContainer" *ngIf="!loading">
                 <img style="max-width: 300px;" [src]="imageURL" alt="">
             </div>
             <div class="imageContainer" *ngIf="loading">
