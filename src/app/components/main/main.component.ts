@@ -27,8 +27,9 @@ export class MainComponent implements OnInit{
   }
 
  createImage() {
+  let userGuid = localStorage.getItem('userGuid') || '';
   if (this.userInput) {
-    let data = {prompt: this.userInput}
+    let data = {prompt: this.userInput, userGuid: userGuid}
     this.socketService.emit('event', data);
     this.mainService.postData(data).subscribe(
       response => {
