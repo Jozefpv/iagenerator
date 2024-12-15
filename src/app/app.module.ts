@@ -18,7 +18,10 @@ import { LoginComponent } from './components/login/login.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogLoadingComponent } from './components/main/dialog-loading/dialog-loading.component';
+import { RegisterComponent } from './components/register/register.component';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MainComponent,
     NavbarComponent,
     CategoriesComponent,
-    LoginComponent
+    LoginComponent,
+    DialogLoadingComponent,
+    RegisterComponent
   ],
   imports: [
     HttpClientModule,
@@ -42,7 +47,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     ReactiveFormsModule,
     MatMenuModule,
     MatInputModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDialogModule,
+    MatCardModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

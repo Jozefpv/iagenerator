@@ -9,11 +9,18 @@ import { map, catchError, of } from 'rxjs';
 export class AuthService {
 
   userAuth = false;
-  private loginUrl = 'https://iageneratorapi.onrender.com/auth/login'
-  private logoutUrl = 'https://iageneratorapi.onrender.com/auth/logout'
-  private validateUrl = 'https://iageneratorapi.onrender.com/auth/validate'
+  // private loginUrl = 'https://iageneratorapi.onrender.com/auth/login'
+  // private logoutUrl = 'https://iageneratorapi.onrender.com/auth/logout'
+  // private validateUrl = 'https://iageneratorapi.onrender.com/auth/validate'
 
-  private testUrl = 'https://iageneratorapi.onrender.com/home'
+  // private testUrl = 'https://iageneratorapi.onrender.com/home'
+
+  private loginUrl = 'http://localhost:3000/auth/login'
+  private registerUrl = 'http://localhost:3000/auth/register'
+  private logoutUrl = 'http://localhost:3000/auth/logout'
+  private validateUrl = 'http://localhost:3000/auth/validate'
+
+  private testUrl = 'http://localhost:3000/home'
   
   constructor(private http: HttpClient) { }
 
@@ -36,6 +43,18 @@ export class AuthService {
 
   login(credentials: any): Observable<any> {
     return this.http.post<{ success: boolean }>(this.loginUrl, credentials, { withCredentials: true }).pipe(
+      map((response) => {
+        this.userAuth = response.success;
+        return response;
+      }),
+      catchError((error) => {
+        return of(false);
+      })
+    );
+  }
+
+  register(credentials: any): Observable<any> {
+    return this.http.post<{ success: boolean }>(this.registerUrl, credentials, { withCredentials: true }).pipe(
       map((response) => {
         this.userAuth = response.success;
         return response;
