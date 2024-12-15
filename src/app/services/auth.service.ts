@@ -9,18 +9,20 @@ import { map, catchError, of } from 'rxjs';
 export class AuthService {
 
   userAuth = false;
-  // private loginUrl = 'https://iageneratorapi.onrender.com/auth/login'
-  // private logoutUrl = 'https://iageneratorapi.onrender.com/auth/logout'
-  // private validateUrl = 'https://iageneratorapi.onrender.com/auth/validate'
+  private loginUrl = 'https://iageneratorapi.onrender.com/auth/login'
+  private registerUrl = 'https://iageneratorapi.onrender.com/auth/register'
 
-  // private testUrl = 'https://iageneratorapi.onrender.com/home'
+  private logoutUrl = 'https://iageneratorapi.onrender.com/auth/logout'
+  private validateUrl = 'https://iageneratorapi.onrender.com/auth/validate'
 
-  private loginUrl = 'http://localhost:3000/auth/login'
-  private registerUrl = 'http://localhost:3000/auth/register'
-  private logoutUrl = 'http://localhost:3000/auth/logout'
-  private validateUrl = 'http://localhost:3000/auth/validate'
+  private testUrl = 'https://iageneratorapi.onrender.com/home'
 
-  private testUrl = 'http://localhost:3000/home'
+  // private loginUrl = 'http://localhost:3000/auth/login'
+  // private registerUrl = 'http://localhost:3000/auth/register'
+  // private logoutUrl = 'http://localhost:3000/auth/logout'
+  // private validateUrl = 'http://localhost:3000/auth/validate'
+
+  // private testUrl = 'http://localhost:3000/home'
   
   constructor(private http: HttpClient) { }
 
