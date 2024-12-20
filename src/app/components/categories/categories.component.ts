@@ -30,39 +30,31 @@ export class CategoriesComponent implements OnInit {
 
 
   printPhoto(photoUrl: string): void {
-    const printWindow = window.open('', '_blank');
-    if (printWindow) {
-      printWindow.document.write(`
-        <html>
-          <head>
-            <title>Imprimir Foto</title>
-            <style>
-              body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-              }
-              img {
-                max-width: 100%;
-                max-height: 100%;
-              }
-            </style>
-          </head>
-          <body>
-            <img src="${photoUrl}" alt="Foto a imprimir">
-          </body>
-        </html>
-      `);
-      printWindow.document.close();
-      printWindow.focus();
-      printWindow.print();
-      printWindow.close();
-    } else {
-      console.error('No se pudo abrir la ventana de impresión.');
-    }
+    const printContent = document.createElement('div');
+    printContent.style.position = 'fixed';
+    printContent.style.top = '0';
+    printContent.style.left = '0';
+    printContent.style.width = '100%';
+    printContent.style.height = '100%';
+    printContent.style.background = 'white';
+    printContent.style.display = 'flex';
+    printContent.style.justifyContent = 'center';
+    printContent.style.alignItems = 'center';
+    printContent.style.zIndex = '9999';
+  
+    const img = document.createElement('img');
+    img.src = photoUrl;
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+  
+    printContent.appendChild(img);
+    document.body.appendChild(printContent);
+  
+    window.print();
+  
+    document.body.removeChild(printContent);
   }
+  
 
   setPhotoList() {
     switch (this.id) {

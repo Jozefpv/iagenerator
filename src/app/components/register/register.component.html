@@ -1,35 +1,68 @@
-<div class="loginContainer">
-    <form [formGroup]="registerForm" class="formContainer" (ngSubmit)="onSubmit()">
-        <h3>PINTALOO</h3>
+<div class="container">
+    <!-- Lado izquierdo: Imagen grande de la paleta -->
+    <div class="left-section">
+      <img src="https://i.postimg.cc/SxjsQq6K/painting-palette.png" alt="Palette" class="palette-image" />
+    </div>
+  
+    <!-- Lado derecho: Formulario -->
+    <div class="right-section">
+      <!-- Logo de Pintaloo -->
+      <div class="logo-container">
+        <img src="https://i.postimg.cc/T1HK0SRQ/Pintaloo-1.png" alt="Pintaloo Logo" class="pintaloo-logo" />
+      </div>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput type="text" formControlName="name" required>
+      <!-- Formulario de Registro -->
+      <mat-card>
+        <form [formGroup]="registerForm" class="formContainer" (ngSubmit)="onSubmit()">
+          <!-- Título del formulario -->
+          <h3 class="form-title">Regístrate en Pintaloo</h3>
+          
+          <!-- Campo de Nombre -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput type="text" formControlName="name" placeholder="Tu nombre" required />
             <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+              El nombre es obligatorio.
             </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width" appearance="fill">
+          </mat-form-field>
+          
+          <!-- Campo de Email -->
+          <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email</mat-label>
-            <input matInput type="email" formControlName="email" required>
+            <input matInput type="email" formControlName="email" placeholder="ejemplo@gmail.com" required />
             <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+              El email es obligatorio.
             </mat-error>
-        </mat-form-field>
+          </mat-form-field>
 
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Password</mat-label>
+          <!-- Campo de Contraseña -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="***" required />
             <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+              La contraseña es obligatoria.
             </mat-error>
-            <input matInput type="password" formControlName="password" required>
-        </mat-form-field>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Repeat Password</mat-label>
-            <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
-            </mat-error>
-            <input matInput type="password" formControlName="confirmPassword" required>
-        </mat-form-field>
+          </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" style="margin-bottom: 20px;" [disabled]="registerForm.invalid">Register</button>
-        <p>¿Ya tienes cuenta? <a style="color:blue; cursor: pointer;" [routerLink]="['/login']">Incia sesión</a></p>
-    </form>
+          <!-- Campo de Repetir Contraseña -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Repite la contraseña</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" placeholder="***" required />
+            <mat-error *ngIf="registerForm.get('confirmPassword')?.hasError('required')">
+              Debes confirmar la contraseña.
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Botón de Registro -->
+          <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="registerForm.invalid">
+            Registrarse
+          </button>
+
+          <!-- Redirección a Login -->
+          <p class="signup-text">¿Ya tienes cuenta?
+            <a [routerLink]="['/login']" class="signup-link">Inicia sesión</a>
+          </p>
+        </form>
+      </mat-card>
+    </div>
 </div>

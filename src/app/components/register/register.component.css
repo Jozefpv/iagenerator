@@ -1,12 +1,86 @@
-.loginContainer {
-    height: 100%;
+.container {
     display: flex;
+    height: 100vh;
+    background-color: #e6f7ff;
+    align-items: center;
+  }
+  
+  .left-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
     justify-content: center;
-}
-
-.formContainer {
+  }
+  
+  .palette-image {
+    max-width: 90%;
+    height: auto;
+  }
+  
+  .right-section {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 2rem;
+    background-color: #9FD6F4;
+    height: 80%;
+    border-radius: 5px;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pintaloo-logo {
+    max-width: 200px;
+    height: auto;
+  }
+  
+  mat-card {
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .social-button {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
     align-items: center;
-}
+    justify-content: center;
+  }
+  
+  .social-button img {
+    width: 20px;
+    margin-right: 10px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .forgot-password {
+    float: right;
+    color: #2196f3;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .submit-button {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .signup-text {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  
+  .signup-link {
+    color: #2196f3;
+    text-decoration: none;
+  }

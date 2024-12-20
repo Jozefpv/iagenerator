@@ -36,7 +36,7 @@
           <!-- Campo de Contraseña -->
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" formControlName="password" placeholder="***" required />
+            <input matInput type="password" formControlName="password" placeholder="********" required />
             <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
               La contraseña es obligatoria.
             </mat-error>

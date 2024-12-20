@@ -54,4 +54,30 @@ export class MainComponent implements OnInit {
     });
   }
 
+  printPhoto(): void {
+    const printContent = document.createElement('div');
+    printContent.style.position = 'fixed';
+    printContent.style.top = '0';
+    printContent.style.left = '0';
+    printContent.style.width = '100%';
+    printContent.style.height = '100%';
+    printContent.style.background = 'white';
+    printContent.style.display = 'flex';
+    printContent.style.justifyContent = 'center';
+    printContent.style.alignItems = 'center';
+    printContent.style.zIndex = '9999';
+  
+    const img = document.createElement('img');
+    img.src = this.imageURL;
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+  
+    printContent.appendChild(img);
+    document.body.appendChild(printContent);
+  
+    window.print();
+  
+    document.body.removeChild(printContent);
+  }
+
 }
