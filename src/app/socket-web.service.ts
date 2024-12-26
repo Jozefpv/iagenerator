@@ -13,43 +13,29 @@ export class SocketWebService{
 
 
   constructor() {
-    this.socket = io(this.serverUrl);
-  
-    this.socket.on('connect', () => {
-      const userGuid = localStorage.getItem('userGuid')
-      if (userGuid) {
-        this.socket.emit('userGuid', userGuid);
-      } else {
-        console.error('No se encontró el userGuid en localStorage');
-      }
-    })
-   }
-
-   listenForImageUrls(): Observable<string[]> {
-    return new Observable<string[]>((observer) => {
-      this.socket.on('imageReady', (data: any) => {
-        if (data && data.upscaledUrls) {
-          observer.next(data.upscaledUrls);
-        } else {
-          observer.next([]);
-        }
-      });
-    });
+    this.socket = io(this.serverUrl); // Cambia la URL si es necesario
   }
 
+  // Escucha para el progreso de la imagen
   listenForImageProgress(): Observable<number> {
-    return new Observable<number>((observer) => {
-      this.socket.on('imageProgress', (data: any) => {
-        if (data && data.progress !== undefined) {
-          observer.next(data.progress);
-        } else {
-          observer.next(0);
-        }
+    return new Observable((observer) => {
+      this.socket.on('imageProgress', (data: { id: string; progress: number }) => {
+        observer.next(data.progress);
       });
     });
   }
 
-  emit(eventName: string, data: any): void {
-    this.socket.emit(eventName, data);
+  // Escucha cuando la imagen está lista
+  listenForImageUrls(): Observable<string[]> {
+    return new Observable((observer) => {
+      this.socket.on('imageReady', (data: { id: string; upscaledUrls: string[] }) => {
+        observer.next(data.upscaledUrls);
+      });
+    });
+  }
+
+  // Emitir eventos
+  emit(event: string, data: any): void {
+    this.socket.emit(event, data);
   }
 }

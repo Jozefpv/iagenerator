@@ -1,7 +1,8 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SocketWebService } from 'src/app/socket-web.service';
 import { MainService } from '../main.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dialog-loading',
@@ -10,8 +11,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class DialogLoadingComponent implements OnInit {
 
-  imageProgress = 0;
+  private socketSubscription: Subscription | undefined;
+  private progressSubscription: Subscription | undefined;
+  imageProgress: number = 0
+  loading = false
+
   imageURL: string = '';
+  errorMessage: string = '';
 
   constructor(
     private mainService: MainService,
@@ -21,18 +27,18 @@ export class DialogLoadingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+      this.progressSubscription = this.socketService.listenForImageProgress().subscribe((progress: any) => {
+      this.imageProgress = progress;
+      console.log(`Progreso de la imagen ${this.imageProgress}%`);
+    });
+
     const userGuid = localStorage.getItem('userGuid') || '';
     const userInput = this.data?.userInput || '';
 
     if (userInput) {
       const data = { prompt: userInput, userGuid: userGuid };
-      this.socketService.emit('event', data);
-
-      setTimeout(() => { this.imageProgress = 10; }, 2000);
-      setTimeout(() => { this.imageProgress = 35; }, 10000);
-      setTimeout(() => { this.imageProgress = 65; }, 20000);
-      setTimeout(() => { this.imageProgress = 85; }, 30000);
-
+      this.socketService.emit('userGuid', data.userGuid);
 
       this.mainService.postData(data).subscribe(
         response => {
@@ -40,10 +46,16 @@ export class DialogLoadingComponent implements OnInit {
           this.imageURL = response;
         },
         error => {
-
+          if (error.status === 401) {
+            console.error('Error: Límite de contador superado.');
+            this.errorMessage = 'Has alcanzado el límite de imágenes permitidas.'; 
+            return;
+          } else {
+            console.error('Error inesperado:', error);
+            this.errorMessage = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
+          }
         }
       );
-
 
       this.socketService.listenForImageUrls().subscribe((urls: string[]) => {
         if (urls && urls.length > 0) {
@@ -52,6 +64,7 @@ export class DialogLoadingComponent implements OnInit {
           this.closeDialogWithResult();
         }
       });
+      
     } else {
       this.dialogRef.close();
     }

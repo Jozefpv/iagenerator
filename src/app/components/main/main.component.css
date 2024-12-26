@@ -124,6 +124,7 @@
 
 .imageElement {
     max-width: 300px;
+    object-fit: cover;
 }
 
 .buttonPrintContainer {
