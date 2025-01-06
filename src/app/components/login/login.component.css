@@ -84,3 +84,13 @@
     color: #2196f3;
     text-decoration: none;
   }
+
+  @media (max-width: 768px) {
+    .left-section {
+      display: none;
+    }
+
+    .social-button{
+      font-size: 12px;
+    }
+  }

@@ -15,10 +15,10 @@
       <mat-card>
         <form [formGroup]="loginForm" class="formContainer" (ngSubmit)="onSubmit()">
           <!-- Botones de Google y Facebook -->
-          <button mat-stroked-button class="social-button">
+          <button mat-stroked-button class="social-button" disabled="true">
             <img src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png" style="width: 20px;" alt="Google" /> Iniciar sesión con Google
           </button>
-          <button mat-stroked-button class="social-button">
+          <button mat-stroked-button class="social-button" disabled="true">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Facebook_logo_%28square%29.png/480px-Facebook_logo_%28square%29.png" style="width: 20px;" alt="Facebook" /> Iniciar sesión con Facebook
           </button>
           
@@ -43,8 +43,8 @@
           </mat-form-field>
           
           <!-- Opciones adicionales -->
-          <mat-checkbox formControlName="rememberMe">Recuérdame</mat-checkbox>
-          <a class="forgot-password" href="#"> ¿Olvidaste la contraseña?</a>
+          <!-- <mat-checkbox formControlName="rememberMe">Recuérdame</mat-checkbox> -->
+          <!-- <a class="forgot-password" href="#"> ¿Olvidaste la contraseña?</a> -->
           
           <!-- Botón de Login -->
           <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="loginForm.invalid">
