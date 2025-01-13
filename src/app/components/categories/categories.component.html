@@ -1,6 +1,19 @@
 <div class="categoryGlobalContainer">
     <div class="photosContainer" *ngFor="let photo of photosList; let i = index">
-        <img class="singlePhoto" [src]="photo" alt="">
-        <button class="buttonPrint" (click)="printPhoto(photo)"><mat-icon>print</mat-icon>Imprimir</button>
+      <div class="loadingContainer" *ngIf="!loadedImages[i]">
+        <div class="loadingSpinner"></div>
+        <p>Cargando...</p>
+      </div>
+      <img
+        class="singlePhoto"
+        [src]="photo"
+        alt=""
+        (load)="onImageLoad(i)"
+        [hidden]="!loadedImages[i]"
+      />
+      <button class="buttonPrint" (click)="printPhoto(photo)">
+        <mat-icon>print</mat-icon>Imprimir
+      </button>
     </div>
-</div>
+  </div>
+  

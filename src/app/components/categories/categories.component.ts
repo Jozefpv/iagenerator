@@ -17,6 +17,7 @@ export class CategoriesComponent implements OnInit {
 
   id: string | null = null;
   photosList: string[] = [];
+  loadedImages: boolean[] = [];
 
   constructor(private route: ActivatedRoute) { }
 
@@ -24,6 +25,7 @@ export class CategoriesComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
       this.setPhotoList();
+      this.loadedImages = new Array(this.photosList.length).fill(false);
     });
   }
 
@@ -41,20 +43,19 @@ export class CategoriesComponent implements OnInit {
     printContent.style.justifyContent = 'center';
     printContent.style.alignItems = 'center';
     printContent.style.zIndex = '9999';
-  
+
     const img = document.createElement('img');
     img.src = photoUrl;
     img.style.maxWidth = '100%';
     img.style.maxHeight = '100%';
-  
+
     printContent.appendChild(img);
     document.body.appendChild(printContent);
-  
+
     window.print();
-  
+
     document.body.removeChild(printContent);
   }
-  
 
   setPhotoList() {
     switch (this.id) {
@@ -77,5 +78,10 @@ export class CategoriesComponent implements OnInit {
         this.photosList = Cartoon;
         break;
     }
+    this.loadedImages = new Array(this.photosList.length).fill(false);
+  }
+
+  onImageLoad(index: number): void {
+    this.loadedImages[index] = true;
   }
 }
