@@ -6,6 +6,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
+import { BoardComponent } from './components/board/board.component';
 
 const routes: Routes = [
   {
@@ -13,9 +14,12 @@ const routes: Routes = [
     component: NavbarComponent,
     children: [
       { path: '', component: MainComponent },
-      { path: 'categories/:id', component: CategoriesComponent }
+      { path: 'categories/:id', component: CategoriesComponent },
     ],
     canActivate: [authGuard]
+  },
+  {
+    path: 'board/:url', component: BoardComponent
   },
   {
     path: 'login',

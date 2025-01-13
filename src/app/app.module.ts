@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogLoadingComponent } from './components/main/dialog-loading/dialog-loading.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatCardModule } from '@angular/material/card';
+import { BoardComponent } from './components/board/board.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { MatCardModule } from '@angular/material/card';
     CategoriesComponent,
     LoginComponent,
     DialogLoadingComponent,
-    RegisterComponent
+    RegisterComponent,
+    BoardComponent
   ],
   imports: [
     HttpClientModule,

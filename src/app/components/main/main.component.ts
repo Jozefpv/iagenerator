@@ -5,6 +5,7 @@ import { SocketWebService } from 'src/app/socket-web.service';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogLoadingComponent } from './dialog-loading/dialog-loading.component';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class MainComponent implements OnInit {
   imageProgress: number = 0
   loading = false
 
-  constructor(private mainService: MainService, private socketService: SocketWebService, private dialog: MatDialog) { }
+  constructor(private mainService: MainService, private socketService: SocketWebService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     // this.socketSubscription = this.socketService.listenForImageUrls().subscribe((urls: string[]) => {
@@ -78,6 +79,11 @@ export class MainComponent implements OnInit {
     window.print();
   
     document.body.removeChild(printContent);
+  }
+
+  navigateToRoute(){
+    const encodedUrl = encodeURIComponent(this.imageURL);
+    this.router.navigate([`/board/${encodedUrl}`]);
   }
 
 }

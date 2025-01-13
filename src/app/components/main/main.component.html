@@ -4,7 +4,8 @@
             <div class="promptContainer">
                 <h1 class="promptContainerTitle">¿QUÉ DIBUJAMOS HOY?</h1>
                 <h3 class="promptContainerSubtitle">Cuéntame que te gustaría colorear</h3>
-                <input class="inputPrompt" [(ngModel)]="userInput" type="text" placeholder="Ejemplo: Cristiano señalando el penal">
+                <input class="inputPrompt" [(ngModel)]="userInput" type="text"
+                    placeholder="Ejemplo: Cristiano señalando el penal">
                 <button class="buttonPrompt" (click)="openDialog()">Comenzar creacion</button>
             </div>
         </div>
@@ -13,11 +14,14 @@
                 <img class="imageElement" [src]="imageURL" alt="">
             </div>
             <div class="imageContainer" *ngIf="loading">
-                
+
             </div>
             <div class="buttonPrintContainer">
                 <button class="buttonPrint" (click)="printPhoto()"><mat-icon>print</mat-icon>Imprimir</button>
             </div>
+            <button class="buttonPrint" (click)="navigateToRoute()">
+                <mat-icon>brush</mat-icon>Colorear
+            </button>
         </div>
     </div>
     <div class="footerContainer"></div>

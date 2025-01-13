@@ -1,0 +1,12 @@
+<div class="boardContainer">
+  <div class="toolsContainer">
+    <button class="buttonTool" (click)="clearCanvas()">Clear</button>
+    <button class="buttonTool" (click)="saveAsSVG()">Save as SVG</button>
+    <button class="buttonTool" (click)="undo()" [disabled]="historyIndex < 0">Undo</button>
+  </div>
+  <div class="inputContainers">
+    <input class="inputColor" type="color" [(ngModel)]="selectedColor" (change)="updateBrushColor(selectedColor)" />
+    <input class="inputTool" type="number" [(ngModel)]="brushSize" (change)="updateBrushSize()" min="1" max="50" />
+  </div>
+  <canvas #whiteboardCanvas style="border: 1px solid black;"></canvas>
+</div>
