@@ -6,6 +6,9 @@ import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogLoadingComponent } from './dialog-loading/dialog-loading.component';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 
 
 @Component({
@@ -23,7 +26,7 @@ export class MainComponent implements OnInit {
   imageProgress: number = 0
   loading = false
 
-  constructor(private mainService: MainService, private socketService: SocketWebService, private dialog: MatDialog, private router: Router) { }
+  constructor(private mainService: MainService, private socketService: SocketWebService, private dialog: MatDialog, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // this.socketSubscription = this.socketService.listenForImageUrls().subscribe((urls: string[]) => {
@@ -39,19 +42,41 @@ export class MainComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogLoadingComponent, {
-      width: '600px',
-      data: { userInput: this.userInput },
-      disableClose: true
-    });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Imagen recibida desde el diálogo:', result);
-        this.imageURL = result;
+    this.authService.isAuthenticated().subscribe((res) => {
+      if(res){
+        const dialogRef = this.dialog.open(DialogLoadingComponent, {
+          width: '600px',
+          data: { userInput: this.userInput },
+          disableClose: true
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            this.imageURL = result;
+          }
+        });
       } else {
-        console.log('El diálogo fue cerrado sin resultados.');
+        const dialogRef = this.dialog.open(DialogLoginComponent, {
+          width: '600px',
+          data: { userInput: this.userInput },
+          disableClose: true
+        });
+    
+        dialogRef.afterClosed().subscribe(result => {
+          if (result) {
+            this.imageURL = result;
+          }
+        });
       }
+    })
+  }
+
+  showNotification(message: string, action: string = '', duration: number = 3000): void {
+    this.snackBar.open(message, action, {
+      duration,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
   }
 

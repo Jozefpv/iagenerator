@@ -1,16 +1,13 @@
 <h2 mat-dialog-title class="dialogTitle">{{ currentMessage }}</h2>
 
 <div mat-dialog-content>
-  <!-- Barra de progreso -->
   <mat-progress-bar *ngIf="!errorMessage" mode="determinate" [value]="imageProgress"></mat-progress-bar>
 
-  <!-- Mensaje de error -->
   <div *ngIf="errorMessage" class="error-message">
     <p>{{ errorMessage }}</p>
   </div>
 </div>
 
-<!-- Botón opcional para cerrar el diálogo manualmente -->
 <div mat-dialog-actions *ngIf="errorMessage">
   <button mat-button (click)="closeDialogWithResult()">Cerrar</button>
 </div>

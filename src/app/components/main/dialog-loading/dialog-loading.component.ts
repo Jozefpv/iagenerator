@@ -55,18 +55,15 @@ export class DialogLoadingComponent implements OnInit {
 
       this.mainService.postData(data).subscribe(
         response => {
-          console.log('Respuesta del servidor:', response);
           this.imageURL = response;
         },
         error => {
           this.stopMessageRotation();
           this.stopSimulatedProgress();
           if (error.status === 401) {
-            console.error('Error: Límite de contador superado.');
             this.errorMessage = 'Has alcanzado el límite de imágenes permitidas.'; 
             return;
           } else {
-            console.error('Error inesperado:', error);
             this.errorMessage = 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
           }
         }
