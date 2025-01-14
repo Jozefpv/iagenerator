@@ -15,8 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', component: MainComponent },
       { path: 'categories/:id', component: CategoriesComponent },
-    ],
-    canActivate: [authGuard]
+    ]
   },
   {
     path: 'board/:url', component: BoardComponent

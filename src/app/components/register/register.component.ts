@@ -19,7 +19,7 @@ export class RegisterComponent  implements OnInit{
     private snackBar: MatSnackBar
   ) {
     this.registerForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]], // Nuevo campo "name"
+      name: ['', [Validators.required, Validators.minLength(3)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
@@ -28,7 +28,6 @@ export class RegisterComponent  implements OnInit{
 
   ngOnInit(): void {}
 
-  // Validador personalizado para contraseñas
   passwordMatchValidator(formGroup: FormGroup): void {
     const password = formGroup.get('password');
     const confirmPassword = formGroup.get('confirmPassword');
@@ -39,7 +38,6 @@ export class RegisterComponent  implements OnInit{
     }
   }
 
-  // Manejo del envío del formulario
   onSubmit(): void {
     if (this.registerForm.valid) {
       const { name, email, password } = this.registerForm.value;

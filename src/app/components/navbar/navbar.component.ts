@@ -19,10 +19,14 @@ export class NavbarComponent implements OnInit {
     { id: 5, title: 'Dibujos Animados', avatarImage: 'assets/photos/serie.png' }
   ]
 
+  isAuth = false;
+
   constructor(private router: Router, private authService: AuthService, private socketService: SocketWebService){}
 
   ngOnInit(): void {
-    
+    this.authService.isAuthenticated().subscribe((res) => {
+      this.isAuth = res
+    })
   }
 
   homeRedirect(){

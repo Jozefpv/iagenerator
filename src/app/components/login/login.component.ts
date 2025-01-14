@@ -20,21 +20,18 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Agregar un eventListener para detectar la tecla Enter
     document.addEventListener('keydown', this.handleKeydown.bind(this));
   }
 
-  // Manejador de eventos para la tecla Enter
   handleKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' && this.loginForm.valid) {
-      this.onSubmit(); // Llama a la función de envío si el formulario es válido
+      this.onSubmit();
     }
   }
 
   onSubmit() {
     this.authService.login(this.loginForm.value).subscribe(res => {
       if (res) {
-        console.log(res);
         localStorage.setItem('userGuid', res.userGuid);
         this.router.navigate(['/']);
       } else {

@@ -7,7 +7,10 @@
             <img class="avatarImage" src="assets/photos/medalla.webp" alt="">
             <h3 class="premiumTitle">Beta</h3>
         </div>
-        <div>
+        <div *ngIf="!isAuth">
+            <button class="sessionButton" (click)="closeSession()">Iniciar sesión</button>
+        </div>
+        <div *ngIf="isAuth">
             <button class="sessionButton" (click)="closeSession()">Cerrar sesión</button>
         </div>
     </div>

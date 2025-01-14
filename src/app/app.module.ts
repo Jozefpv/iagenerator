@@ -23,6 +23,7 @@ import { DialogLoadingComponent } from './components/main/dialog-loading/dialog-
 import { RegisterComponent } from './components/register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { BoardComponent } from './components/board/board.component';
+import { DialogLoginComponent } from './components/main/dialog-login/dialog-login.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { BoardComponent } from './components/board/board.component';
     LoginComponent,
     DialogLoadingComponent,
     RegisterComponent,
-    BoardComponent
+    BoardComponent,
+    DialogLoginComponent
   ],
   imports: [
     HttpClientModule,

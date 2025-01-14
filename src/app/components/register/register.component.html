@@ -1,23 +1,17 @@
 <div class="container">
-    <!-- Lado izquierdo: Imagen grande de la paleta -->
     <div class="left-section">
       <img src="https://i.postimg.cc/SxjsQq6K/painting-palette.png" alt="Palette" class="palette-image" />
     </div>
   
-    <!-- Lado derecho: Formulario -->
     <div class="right-section">
-      <!-- Logo de Pintaloo -->
       <div class="logo-container">
         <img src="https://i.postimg.cc/T1HK0SRQ/Pintaloo-1.png" alt="Pintaloo Logo" class="pintaloo-logo" />
       </div>
 
-      <!-- Formulario de Registro -->
       <mat-card>
         <form [formGroup]="registerForm" class="formContainer" (ngSubmit)="onSubmit()">
-          <!-- Título del formulario -->
           <h3 class="form-title">Regístrate en Pintaloo</h3>
           
-          <!-- Campo de Nombre -->
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Nombre</mat-label>
             <input matInput type="text" formControlName="name" placeholder="Tu nombre" required />
@@ -26,7 +20,6 @@
             </mat-error>
           </mat-form-field>
           
-          <!-- Campo de Email -->
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Email</mat-label>
             <input matInput type="email" formControlName="email" placeholder="ejemplo@gmail.com" required />
@@ -35,7 +28,6 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Campo de Contraseña -->
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Contraseña</mat-label>
             <input matInput type="password" formControlName="password" placeholder="***" required />
@@ -44,7 +36,6 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Campo de Repetir Contraseña -->
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>Repite la contraseña</mat-label>
             <input matInput type="password" formControlName="confirmPassword" placeholder="***" required />
@@ -53,12 +44,10 @@
             </mat-error>
           </mat-form-field>
 
-          <!-- Botón de Registro -->
           <button mat-raised-button color="primary" class="submit-button" type="submit" [disabled]="registerForm.invalid">
             Registrarse
           </button>
 
-          <!-- Redirección a Login -->
           <p class="signup-text">¿Ya tienes cuenta?
             <a [routerLink]="['/login']" class="signup-link">Inicia sesión</a>
           </p>

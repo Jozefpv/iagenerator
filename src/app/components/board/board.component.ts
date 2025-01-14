@@ -12,8 +12,8 @@ export class BoardComponent implements OnInit {
   @ViewChild('whiteboardCanvas', { static: true }) canvas!: ElementRef;
 
   private canvasObject!: fabric.Canvas;
-  history: string[] = [];  // Historial de estados
-  historyIndex: number = -1;  // Índice actual en el historial
+  history: string[] = [];
+  historyIndex: number = -1;
   selectedColor: string = '#000000';
   brushSize: number = 5;
   backgroundImage: string = '';
@@ -36,7 +36,7 @@ export class BoardComponent implements OnInit {
     this.updateBrushSettings();
     this.setBackgroundImage(this.backgroundImage);
 
-    this.setupCanvasEvents();  // Configurar eventos del lienzo
+    this.setupCanvasEvents();
   }
 
   updateBrushSettings() {
@@ -82,12 +82,8 @@ export class BoardComponent implements OnInit {
       this.canvasObject.clear();
     }
 
-    // Limpiar el historial al borrar el lienzo
     this.history = [];
     this.historyIndex = -1;
-
-    // Asegurar que el historial se reinicie correctamente y permita el primer trazo
-    console.log('Canvas cleared, history reset.');
   }
 
   saveAsSVG() {
@@ -116,11 +112,9 @@ export class BoardComponent implements OnInit {
       const imgWidth = img.width!;
       const imgHeight = img.height!;
   
-      // Ajustar las dimensiones del lienzo al tamaño de la imagen
       this.canvasObject.setWidth(imgWidth);
       this.canvasObject.setHeight(imgHeight);
   
-      // Ajustar la escala de la imagen para que encaje perfectamente
       this.canvasObject.setBackgroundImage(
         img,
         this.canvasObject.renderAll.bind(this.canvasObject),
@@ -130,67 +124,47 @@ export class BoardComponent implements OnInit {
         }
       );
   
-      // Renderizar el lienzo con las nuevas dimensiones
       this.canvasObject.renderAll();
     });
   }
   
 
-  // Configurar eventos para guardar el estado cada vez que se modifica el lienzo
   setupCanvasEvents() {
     this.canvasObject.on('object:added', (e) => {
-      console.log('Object added, updating history...');
-      // Solo registrar si el objeto agregado es un trazo
       if (e.target && e.target.type === 'path') {
         this.updateHistory();
       }
     });
 
     this.canvasObject.on('object:modified', (e) => {
-      console.log('Object modified, updating 2...');
-      // Solo registrar si el objeto modificado es un trazo
       if (e.target && e.target.type === 'path') {
         this.updateHistory();
       }
     });
 
     this.canvasObject.on('object:removed', (e) => {
-      console.log('Object removed, updating history...');
-      // Solo registrar si el objeto eliminado es un trazo
       if (e.target && e.target.type === 'path') {
         this.updateHistory();
       }
     });
   }
 
-  // Guardar el estado del lienzo en el historial
   updateHistory() {
-    // Obtener el estado del lienzo en formato JSON
     const canvasState = this.canvasObject.toJSON();
 
-    // Solo agregamos un nuevo estado si estamos fuera de un undo/redo
     if (this.historyIndex === this.history.length - 1 || this.historyIndex === -1) {
-      // Si estamos en el último estado o si hemos limpiado el lienzo
       this.history.push(JSON.stringify(canvasState));
-      this.historyIndex++; // Avanzamos el índice del historial
-      console.log('History updated, index:', this.historyIndex); // Verificar el valor del índice
+      this.historyIndex++;
     }
   }
 
-  // Deshacer el último cambio
   undo() {
-    console.log('Undo action, history index:', this.historyIndex); // Verificar el índice antes de hacer undo
     if (this.historyIndex > 0) {
-      this.historyIndex--; // Mover hacia atrás en el historial
+      this.historyIndex--;
       const lastState = this.history[this.historyIndex];
       this.canvasObject.loadFromJSON(lastState, this.canvasObject.renderAll.bind(this.canvasObject));
-      console.log('Undo applied, history index:', this.historyIndex); // Verificar el índice después del undo
     } else if (this.historyIndex === 0) {
-      // Si estamos en el primer estado, solo borrar el lienzo
       this.clearCanvas()
-      console.log('Canvas cleared, history index reset to -1');
-    } else {
-      console.log('No more actions to undo.');
     }
   }
 }
