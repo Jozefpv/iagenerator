@@ -4,8 +4,9 @@
             <div class="promptContainer">
                 <h1 class="promptContainerTitle">¿QUÉ DIBUJAMOS HOY?</h1>
                 <h3 class="promptContainerSubtitle">Cuéntame que te gustaría colorear</h3>
-                <input class="inputPrompt" [(ngModel)]="userInput" type="text"
-                    placeholder="Ejemplo: Cristiano señalando el penal">
+                <textarea class="inputPrompt" [(ngModel)]="userInput" type="text"
+                    placeholder="Ejemplo: Batman jugando al tenis">
+                </textarea>
                 <button class="buttonPrompt" (click)="openDialog()">Comenzar creacion</button>
             </div>
         </div>
