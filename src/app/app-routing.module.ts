@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './components/main/main.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
+import { BodyComponent } from './components/body/body.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
@@ -11,7 +11,7 @@ import { BoardComponent } from './components/board/board.component';
 const routes: Routes = [
   {
     path: '',
-    component: NavbarComponent,
+    component: BodyComponent,
     children: [
       { path: '', component: MainComponent },
       { path: 'categories/:id', component: CategoriesComponent },

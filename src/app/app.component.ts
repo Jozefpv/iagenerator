@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'iagenerator';
+
+  constructor(public router: Router) {}
+
+  shouldShowHeader(): boolean {
+    const hiddenRoutes = ['/login', '/register'];
+    return !hiddenRoutes.includes(this.router.url);
+  }
 }

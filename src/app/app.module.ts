@@ -9,7 +9,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { NavbarComponent } from './components/navbar/navbar.component'
 import { MatDividerModule } from '@angular/material/divider';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { FormsModule } from '@angular/forms';
@@ -24,19 +23,22 @@ import { RegisterComponent } from './components/register/register.component';
 import { MatCardModule } from '@angular/material/card';
 import { BoardComponent } from './components/board/board.component';
 import { DialogLoginComponent } from './components/main/dialog-login/dialog-login.component';
+import { HeaderComponent } from './components/header/header.component';
+import { BodyComponent } from './components/body/body.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    NavbarComponent,
     CategoriesComponent,
     LoginComponent,
     DialogLoadingComponent,
     RegisterComponent,
     BoardComponent,
-    DialogLoginComponent
+    DialogLoginComponent,
+    HeaderComponent,
+    BodyComponent
   ],
   imports: [
     HttpClientModule,
@@ -53,7 +55,7 @@ import { DialogLoginComponent } from './components/main/dialog-login/dialog-logi
     MatInputModule,
     MatProgressBarModule,
     MatDialogModule,
-    MatCardModule 
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,39 +4,6 @@
     align-items: center;
 }
 
-.globalHeaderContainer {
-    display: flex;
-    width: 100%;
-    align-items: center;
-}
-
-.headerContainer {
-    background-color: #f0fafc;
-    height: 100%;
-    width: 60%;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border-radius: 50px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-right: 5%;
-}
-
-.mainLogoContainer {
-    background-color: #f0fafc;
-    height: 100%;
-    width: min-content;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    border-radius: 50px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 10px;
-    margin-right: 5%;
-}
-
 .avatarContainer {
     display: flex;
     width: 100%;
@@ -62,7 +29,9 @@
     background-color: #9FD6F4;
     width: 5%;
     border-radius: 0px 10px 10px 0px;
+    min-width: 100px
 }
+
 
 .navbarRightContainer {
     display: flex;
@@ -135,7 +104,7 @@
     width: 80%;
 }
 
-.sessionButton{
+.sessionButton {
     border: none;
     background-color: #f0fafc;
     border-radius: 50px;
@@ -143,7 +112,19 @@
     font-family: Baloo2;
 }
 
-.sessionButton:hover{
+.sessionButton:hover {
     cursor: pointer;
     background-color: #c9c9c9;
+}
+
+@media (max-width: 590px) {
+
+    .navbarContainer,
+    .navbarRightContainer {
+        display: none;
+    }
+
+    .mainContentContainer {
+        justify-content: center;
+    }
 }

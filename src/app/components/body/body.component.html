@@ -1,0 +1,28 @@
+<div class="globalContainer">
+    <div class="mainContentContainer">
+        <div class="navbarContainer">
+            <div class="avatarContainer">
+                <img class="avatarImage"
+                    src="https://i.postimg.cc/6QZ1Tcbd/personaje-dibujos-animados-avatar-3d-113255-94449.jpg" alt="">
+                <p class="navbarText">Principal</p>
+            </div>
+        </div>
+        <div class="routerContainer">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="navbarRightContainer">
+            <div class="menuOption">
+                <img class="avatarImage" src="assets/photos/codesandbox.png" alt="">
+                <p class="navbarText">Categorías</p>
+            </div>
+            <div class="menuOptionContainer" [routerLink]="['/categories', option.id]"
+                *ngFor="let option of menuOptions; let i = index">
+                <mat-divider class="menuDivider"></mat-divider>
+                <div class="menuOption">
+                    <img class="avatarImage" [src]="option.avatarImage" alt="">
+                    <p class="navbarText">{{option.title}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

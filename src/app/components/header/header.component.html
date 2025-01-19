@@ -1,0 +1,15 @@
+<div class="globalHeaderContainer">
+    <div class="mainLogoContainer">
+        <img class="mainLogo" src="https://i.postimg.cc/T1HK0SRQ/Pintaloo-1.png" (click)="homeRedirect()">
+    </div>
+    <div class="headerContainer">
+        <img class="avatarImage" src="assets/photos/medalla.webp" alt="">
+        <h3 class="premiumTitle">Beta</h3>
+    </div>
+    <div *ngIf="!isAuth">
+        <button class="sessionButton" (click)="closeSession()">Iniciar sesión</button>
+    </div>
+    <div *ngIf="isAuth">
+        <button class="sessionButton" (click)="closeSession()">Cerrar sesión</button>
+    </div>
+</div>
