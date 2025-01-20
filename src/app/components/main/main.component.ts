@@ -41,10 +41,9 @@ export class MainComponent implements OnInit {
 
   }
 
-  openDialog(): void {
-
+  openDialog(actionButton?: boolean, textarea?: HTMLTextAreaElement): void {
     this.authService.isAuthenticated().subscribe((res) => {
-      if(res){
+      if (res && actionButton) {
         const dialogRef = this.dialog.open(DialogLoadingComponent, {
           width: '600px',
           data: { userInput: this.userInput },
@@ -62,15 +61,16 @@ export class MainComponent implements OnInit {
           data: { userInput: this.userInput },
           disableClose: true
         });
-    
-        dialogRef.afterClosed().subscribe(result => {
-          if (result) {
-            this.imageURL = result;
+  
+        dialogRef.afterClosed().subscribe((res) => {
+          if (textarea) {
+            textarea.blur();
           }
         });
       }
-    })
+    });
   }
+  
 
   showNotification(message: string, action: string = '', duration: number = 3000): void {
     this.snackBar.open(message, action, {
