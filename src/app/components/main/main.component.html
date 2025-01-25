@@ -11,19 +11,50 @@
             </div>
         </div>
         <div class="imageGlobalContainer">
-            <div class="imageContainer" *ngIf="!loading">
-                <img class="imageElement" [src]="imageURL" alt="">
-            </div>
-            <div class="imageContainer" *ngIf="loading">
+            <div class="imageContainer">
+                <h2 *ngIf="!imageSelected" class="promptContainerTitle">ELIGE TU FAVORITA</h2>
 
+                <div style="width: 100%; height: 90%; display: flex; flex-direction: column; gap: 15px;"
+                    *ngIf="!imageSelected">
+                    <div style="width: 100%; height: 50%; display: flex; gap: 10px">
+                        <div style="width: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div *ngIf="loadingImages[0]" class="loading-spinner"></div>
+                            <img (click)="selectImage(0)" (load)="onImageLoad(0)" class="imageElement"
+                                [src]="imageURL[0]" alt="">
+                        </div>
+                        <div style=" width: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div *ngIf="loadingImages[1]" class="loading-spinner"></div>
+                            <img (click)="selectImage(1)" (load)="onImageLoad(1)" class="imageElement"
+                                [src]="imageURL[1]" alt="">
+                        </div>
+                    </div>
+                    <div style="width: 100%; height: 50%; display: flex; gap: 10px">
+                        <div style="width: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div *ngIf="loadingImages[2]" class="loading-spinner"></div>
+                            <img (click)="selectImage(2)" (load)="onImageLoad(2)" class="imageElement"
+                                [src]="imageURL[2]" alt="">
+                        </div>
+                        <div style="width: 50%; display: flex; align-items: center; justify-content: center;">
+                            <div *ngIf="loadingImages[3]" class="loading-spinner"></div>
+                            <img (click)="selectImage(3)" (load)="onImageLoad(3)" class="imageElement"
+                                [src]="imageURL[3]" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;"
+                    *ngIf="imageSelected">
+                    <div style="width: 100%;">
+                        <button class="backButton" (click)="backToSelectImage()"><i class="material-icons"
+                                style="cursor: pointer;">arrow_back</i></button>
+                    </div>
+                    <img class="imageElementSelected" [src]="selectedImage" alt="">
+                </div>
             </div>
-            <div class="buttonPrintContainer">
+
+            <div *ngIf="imageSelected" class="buttonPrintContainer">
                 <button class="buttonPrint" (click)="printPhoto()"><mat-icon>print</mat-icon>Imprimir</button>
             </div>
-            <button class="buttonPrint" (click)="navigateToRoute()">
+            <button *ngIf="imageSelected" class="buttonPrint" (click)="navigateToRoute()">
                 <mat-icon>brush</mat-icon>Colorear
             </button>
         </div>
-    </div>
-    <div class="footerContainer"></div>
-</div>

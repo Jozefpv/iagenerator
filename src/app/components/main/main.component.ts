@@ -19,12 +19,21 @@ import { DialogLoginComponent } from './dialog-login/dialog-login.component';
 export class MainComponent implements OnInit {
 
   userInput: string = '';
-  imageURL = 'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg'
+  imageURL = [
+    'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg',
+    'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg',
+    'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg',
+    'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg'
+  ]
+
+  loadingImages: boolean[] = [true, true, true, true];
 
   private socketSubscription: Subscription | undefined;
   private progressSubscription: Subscription | undefined;
   imageProgress: number = 0
   loading = false
+  imageSelected = false
+  selectedImage = 'https://cdn.pixabay.com/photo/2024/06/18/13/53/ai-generated-8838122_1280.jpg'
 
   constructor(private mainService: MainService, private socketService: SocketWebService, private dialog: MatDialog, private router: Router, private authService: AuthService, private snackBar: MatSnackBar) { }
 
@@ -49,9 +58,10 @@ export class MainComponent implements OnInit {
           data: { userInput: this.userInput },
           disableClose: true
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
           if (result) {
+            this.loadingImages = Array(result.length).fill(true);
             this.imageURL = result;
           }
         });
@@ -61,7 +71,7 @@ export class MainComponent implements OnInit {
           data: { userInput: this.userInput },
           disableClose: true
         });
-  
+
         dialogRef.afterClosed().subscribe((res) => {
           if (textarea) {
             textarea.blur();
@@ -70,7 +80,7 @@ export class MainComponent implements OnInit {
       }
     });
   }
-  
+
 
   showNotification(message: string, action: string = '', duration: number = 3000): void {
     this.snackBar.open(message, action, {
@@ -92,23 +102,35 @@ export class MainComponent implements OnInit {
     printContent.style.justifyContent = 'center';
     printContent.style.alignItems = 'center';
     printContent.style.zIndex = '9999';
-  
+
     const img = document.createElement('img');
-    img.src = this.imageURL;
+    img.src = this.selectedImage;
     img.style.maxWidth = '100%';
     img.style.maxHeight = '100%';
-  
+
     printContent.appendChild(img);
     document.body.appendChild(printContent);
-  
+
     window.print();
-  
+
     document.body.removeChild(printContent);
   }
 
-  navigateToRoute(){
-    const encodedUrl = encodeURIComponent(this.imageURL);
+  navigateToRoute() {
+    const encodedUrl = encodeURIComponent(this.selectedImage);
     this.router.navigate([`/board/${encodedUrl}`]);
   }
 
+  backToSelectImage() {
+    this.imageSelected = false
+  }
+
+  selectImage(id: number) {
+    this.imageSelected = true
+    this.selectedImage = this.imageURL[id]
+  }
+
+  onImageLoad(index: number): void {
+    this.loadingImages[index] = false;
+  }
 }

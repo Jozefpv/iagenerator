@@ -19,7 +19,7 @@ export class DialogLoadingComponent implements OnInit {
 
   loading = false
 
-  imageURL: string = '';
+  imageURL: string[] = [];
   errorMessage: string = '';
 
   messages: string[] = [
@@ -71,7 +71,7 @@ export class DialogLoadingComponent implements OnInit {
 
       this.socketService.listenForImageUrls().subscribe((urls: string[]) => {
         if (urls && urls.length > 0) {
-          this.imageURL = urls[0];
+          this.imageURL = urls;
           this.imageProgress = 100;
           this.closeDialogWithResult();
         }
