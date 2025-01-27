@@ -52,6 +52,7 @@
 .promptContainerTitle {
     font-family: Baloo2;
     color: #3768BE;
+    align-self: center;
 }
 
 .promptContainerSubtitle {

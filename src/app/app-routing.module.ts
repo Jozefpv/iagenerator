@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { BoardComponent } from './components/board/board.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   }
 ];
 

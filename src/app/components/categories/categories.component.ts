@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Animals } from 'src/assets/media/animals';
 import { Cars } from 'src/assets/media/cars';
 import { Cartoon } from 'src/assets/media/cartoon';
-import { Celebrities } from 'src/assets/media/celebrities';
+import { Sports } from 'src/assets/media/sports';
 import { Heroes } from 'src/assets/media/heroes';
 import { Princesses } from 'src/assets/media/princesses';
 
@@ -72,7 +72,7 @@ export class CategoriesComponent implements OnInit {
         this.photosList = Cars;
         break;
       case '4':
-        this.photosList = Celebrities;
+        this.photosList = Sports;
         break;
       case '5':
         this.photosList = Cartoon;

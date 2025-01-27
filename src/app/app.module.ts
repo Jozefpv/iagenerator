@@ -25,6 +25,7 @@ import { BoardComponent } from './components/board/board.component';
 import { DialogLoginComponent } from './components/main/dialog-login/dialog-login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BodyComponent } from './components/body/body.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { BodyComponent } from './components/body/body.component';
     BoardComponent,
     DialogLoginComponent,
     HeaderComponent,
-    BodyComponent
+    BodyComponent,
+    AboutComponent
   ],
   imports: [
     HttpClientModule,
